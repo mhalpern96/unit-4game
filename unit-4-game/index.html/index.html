@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>crystal game</title>
+
+  <!-- Added link to the jQuery Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Added a link to Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+<body>
+
+    <div class  = "jumbotron"> 
+        <H1>Crystal Game</H1>
+
+        <h3> Game instructions</h3>
+    </div>
+
+    <div class="container">
+        <div class= "row">   
+            <div class="col-lg 3" id = "goal">goal</div>
+        <div class="card">
+                    
+                       
+              </div>
+            </div>   
+         <div class= "col lg 2">
+             <h3 id="wins"></h3>
+             <h3 id ="loses"></h3> 
+
+         </div>        
+         
+         
+        </div>
+      <div class="row">
+            <button id="button-1" class="btn btn-primary crystal"  item-width = "100px", item-height="100px"><img src="assets/images/blue-crystal.png"> </button>
+            <button id="button-2" class="btn btn-primary crystal" item-width = "100px", item-height="100px"><img src="assets/images/clear-crystal.jpg"></button>
+            <button id="button-3" class="btn btn-primary crystal" item-width = "100px", item-height="100px"> <img src="assets/images/green-crystal.jpg"> </button>
+            <button id="button-4" class="btn btn-primary crystal" item-width = "100px", item-height="100px">  <img src="assets/images/purple-crystal.jpg"></button>
+      </div>     
+      <div class="jumbotron" id = "current"></div>
+    </div>
+
+</body>
+<script type="text/javascript">
+var wins = 0;
+var loses = 0;
+start();
+    function start(){
+var goal = Math.floor(Math.random * 100) + 20;
+$("#goal").text(goal);
+$("#button-1").val(Math.floor(Math.random * 18) + 1);
+$("#button-2").val(Math.floor(Math.random * 18) + 1);
+$("#button-3").val(Math.floor(Math.random * 18) + 1);
+$("#button-4").val(Math.floor(Math.random * 18) + 1);
+var current = 0;
+$("#current").text(current);
+
+    }
+
+$(".crystal").on("click"), function(){
+    current= current+ this.val;
+    $("#current").text(current);
+    check();
+}
+var check = function(){
+    if (current == goal){
+        wins= wins++;
+        $("#wins").text(wins);
+        start();
+    }
+    else if (current > goal){
+        loses= loses++;
+        $("#loses").text(loses);
+        start();
+    }
+}
+
+
+</script>
